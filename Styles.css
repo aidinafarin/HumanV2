@@ -1,0 +1,468 @@
+/* css reset */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* End of css Reset */
+
+
+
+/* Prevent text selection globally */
+* {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F7F6F9;
+    margin: 0;
+    padding: 0;
+    touch-action: manipulation; /* Prevents pinch and double-tap zoom */
+}
+
+.container {
+    width: 390px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 80px; /* Adjusted padding to ensure the sticky nav bar is visible */
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+
+.profile-pic {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.greeting {
+    color: #777777;
+    font-size: 20px;
+    line-height: 1; /* Adjust line height */
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2; /* Adjust line height */
+}
+
+.wallet-icon {
+    background-color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 24px;
+    width: 115px;
+    height: 48px;
+    justify-content: space-around;
+    -webkit-tap-highlight-color: transparent; /* Prevents highlight on tap */
+}
+
+.wallet-icon p {
+    margin: 0;
+    color: #777777;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.wallet-icon img {
+    width: 33px;
+    height: 33px;
+}
+
+.balance-section {
+    text-align: center;
+    margin: 28px 0px;
+}
+
+.balance-section h2 {
+    color: #777777;
+    font-size: 16px;
+}
+
+.balance {
+    font-size: 32px; /* Adjusted font size */
+    font-weight: bold;
+    color: #333333;
+}
+
+.farming-progress {
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 16px;
+}
+
+.farming-progress > p {
+    margin-bottom: 16px;
+    margin-top: 6px;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+/* Progress bar styles */
+@keyframes progress {
+    0% { --percentage: 0; }
+    100% { --percentage: var(--value); }
+}
+
+@property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[role="progressbar"] {
+    --percentage: var(--value);
+    --primary: #D4F120;
+    --secondary: #FFFFFF;
+    --size: 158px; /* Adjust size to fit your design */
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 2 / 1;
+    border-radius: 50% / 100% 100% 0 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+[role="progressbar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+    mask: radial-gradient(at 50% 100%, white 50%, transparent 55.5%);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(at 50% 100%, #0000 46%, #000 40.5%);
+    -webkit-mask-mode: alpha;
+}
+
+.farming-points {
+    background: #E3DAFD;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: calc(65% - 32px); /* Center vertically */
+    left: calc(50% - 32px); /* Center horizontally */
+}
+
+.farming-points .percentage {
+    font-size: 18px;
+    color: #090C39;
+    font-weight: bold;
+    line-height: 1; /* Adjust line height */
+}
+
+.farming-points .total-points {
+    font-size: 12px;
+    color: #090C39;
+    margin-top: -25px; /* Adjust margin to reduce gap */
+}
+
+/* Adjusted existing styles to accommodate progress bar */
+.stats-right {
+    background-color: #F8F5FF;
+    width: 186px;
+    height: 164px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 28px; /* Adjust padding to center the content properly */
+}
+
+
+  
+
+.stats-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stats-top {
+    background: #F8F5FF;
+    width: 122px;
+    height: 77px;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: 16px;
+}
+
+.vault-holder {
+    background: #3D3C42;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vault-holder > img {
+    width: 20px;
+    height: 20px;
+}
+
+.vault {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 8px;
+    align-self: flex-start;
+    color: #a0a0a0;
+}
+
+
+.stb > * {
+    margin-bottom: 10px;
+    line-height: 1; /* Adjust line height */
+}
+
+
+.daily-claim {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+}
+
+.stats-bottom {
+    background: #F8F5FF;
+    width: 122px;
+    height: 77px;
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+/* Existing claim button styles */
+.claim {
+    background: linear-gradient(to left, #6151CE, #A168FF);
+    border: none;
+    width: 108px;
+    height: 63px;
+    border-radius: 28px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), inset 0 4px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.1s; /* Smooth transition for shadow effect */
+    -webkit-tap-highlight-color: transparent; /* Prevents highlight on tap */
+}
+
+/* Add pressed state styles */
+.claim:active, .claim:focus {
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 -4px 8px rgba(255, 255, 255, 0.3);
+    outline: none; /* Removes focus outline on mobile devices */
+}
+
+
+.game-section {
+    background: #6B58E3;
+    width: 350px;
+    height: 164px;
+    display: flex;
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 40px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    gap: 20px;
+
+}
+
+.game-left {
+    flex-basis: 80%;
+}
+
+.game-left > img {
+    width: 130px;
+    height: 130px;
+    border-radius: 20px;
+}
+
+.game-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    margin-top: 8px;
+}
+
+.game-about {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5; /* Adjust line height */
+    margin-bottom: 10px;
+}
+
+.game-right > button {
+    background: transparent;
+    border: 2px solid #A76CDE;
+    width: 129px;
+    height: 52px;
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent; /* Prevents highlight on tap */
+}
+
+.navigation-bar {
+    background: #1B1A1F;
+    position: fixed;
+    bottom: 0;        /* Stick to the bottom */
+    height: 84px;
+    padding-top: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 350px;
+}
+
+.home, .tasks, .friends {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer  p {
+    color: #FFFFFF;
+    font-size: 12px;
+}
+

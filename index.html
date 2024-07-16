@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+        <title>HumanV2</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Meta tags for fullscreen on iPhone -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="manifest" href="manifest.json">
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <div class="left">
+                <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
+                <div class="username">
+                    <p class="greeting">Hello</p>
+                    <p class="name">Aidin!</p>
+                </div>
+            </div>
+            <button class="wallet-icon">
+                <p>Wallet</p>
+                <img src="wallet-icon.png" alt="Wallet">
+            </button>
+        </header>
+
+        <section class="balance-section">
+            <h2>Total Balance</h2>
+            <p class="balance">$15,000,000</p>
+        </section>
+
+        <section class="farming-progress">
+            <p>Daily farming progress</p>
+            <div class="stats">
+                <div class="stats-left">
+                    <div class="stats-top">
+                        <div class="stt">
+                            <div class="vault-holder">
+                                <img src="vault-icon.png" alt="">
+                            </div>
+                            <p class="vault">Vault</p>
+                        </div>
+                        <div class="stb">
+                            <p class="daily-claim">50,246</p>
+                        </div>
+                    </div>
+                    <div class="stats-bottom">
+                        <button class="claim">Claim</button>
+                    </div>
+                </div>
+                <div class="stats-right">
+                    <div role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="--value: 66"></div>
+                    <div class="farming-points">
+                        <span class="percentage">66</span><br>
+                        <span class="total-points">5,000</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="game-section">
+            <div class="game-left">
+                <img src="banner.gif" alt="" class="game-banner">
+            </div>
+            <div class="game-right">
+                <p class="game-about">Play the game to earn more points!</p>
+                <button>Play</button>
+            </div>
+        </section>
+
+
+    </div>
+    <nav class="navigation-bar">
+        <div class="footer">
+            <div class="home">
+                <img src="Home-icon.png" alt="" class="home-icon">
+                <p>Home</p>
+            </div>
+            <div class="tasks">
+                <img src="Tasks-icon.png" alt="" class="tasks-icon">
+                <p>Tasks</p>
+            </div>
+            <div class="friends">
+                <img src="friends-icon.png" alt="" class="friends-icon">
+                <p>Frens</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add your JavaScript here -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var claimButton = document.querySelector('.claim');
+            
+            if (claimButton) {
+                claimButton.addEventListener('touchstart', function () {
+                    claimButton.classList.add('pressed');
+                });
+                
+                claimButton.addEventListener('touchend', function () {
+                    claimButton.classList.remove('pressed');
+                });
+
+                claimButton.addEventListener('mousedown', function () {
+                    claimButton.classList.add('pressed');
+                });
+
+                claimButton.addEventListener('mouseup', function () {
+                    claimButton.classList.remove('pressed');
+                });
+
+                claimButton.addEventListener('mouseout', function () {
+                    claimButton.classList.remove('pressed');
+                });
+            }
+        });
+
+        // Prevent pinch-to-zoom
+        document.addEventListener('touchmove', function (event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
