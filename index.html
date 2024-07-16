@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
-        <title>HumanV2</title>
-        <link rel="stylesheet" href="styles.css">
-        <!-- Meta tags for fullscreen on iPhone -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="manifest" href="manifest.json">
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HumanV2</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
 <body>
     <div class="container">
+        <!-- Your content here -->
         <header>
             <div class="left">
                 <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
@@ -59,7 +56,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
 
         <section class="game-section">
@@ -71,8 +67,6 @@
                 <button>Play</button>
             </div>
         </section>
-
-
     </div>
     <nav class="navigation-bar">
         <div class="footer">
@@ -90,12 +84,12 @@
             </div>
         </div>
     </nav>
-
-    <!-- Add your JavaScript here -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.disableVerticalSwipe();
+            window.Telegram.WebApp.expand();
+
             var claimButton = document.querySelector('.claim');
             
             if (claimButton) {
