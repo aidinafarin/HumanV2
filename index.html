@@ -70,8 +70,6 @@
                 <button>Play</button>
             </div>
         </section>
-
-
     </div>
     <nav class="navigation-bar">
         <div class="footer">
@@ -94,12 +92,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var claimButton = document.querySelector('.claim');
-            
+
             if (claimButton) {
                 claimButton.addEventListener('touchstart', function () {
                     claimButton.classList.add('pressed');
                 });
-                
+
                 claimButton.addEventListener('touchend', function () {
                     claimButton.classList.remove('pressed');
                 });
@@ -116,6 +114,18 @@
                     claimButton.classList.remove('pressed');
                 });
             }
+
+            var adjustFooter = function () {
+                var footer = document.querySelector('.navigation-bar');
+                var rect = footer.getBoundingClientRect();
+                if (rect.top < window.innerHeight - footer.offsetHeight) {
+                    footer.style.bottom = '0';
+                }
+            };
+
+            window.addEventListener('scroll', adjustFooter);
+            window.addEventListener('resize', adjustFooter);
+            adjustFooter();
         });
 
         // Prevent pinch-to-zoom
