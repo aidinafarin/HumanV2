@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Your content here -->
         <header>
             <div class="left">
                 <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
@@ -89,6 +88,7 @@
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.disableVerticalSwipe();
             window.Telegram.WebApp.expand();
+            window.Telegram.WebApp.enableClosingConfirmation();
 
             var claimButton = document.querySelector('.claim');
             
