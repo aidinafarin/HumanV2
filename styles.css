@@ -91,16 +91,22 @@ body {
     margin: 0;
     padding: 0;
     touch-action: manipulation; /* Prevents pinch and double-tap zoom */
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 84px; /* Equal to footer height */
 }
+
 
 .container {
     width: 390px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-    padding-bottom: 80px; /* Adjusted padding to ensure the sticky nav bar is visible */
     padding: 20px;
+    padding-bottom: 100px; /* Ensure enough space for the footer */
+    min-height: calc(100vh - 84px); /* Full height minus footer */
 }
+
 
 header {
     display: flex;
@@ -439,13 +445,17 @@ header {
 .navigation-bar {
     background: #1B1A1F;
     position: fixed;
-    bottom: 0;        /* Stick to the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 84px;
     padding-top: 12px;
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 1000; /* Ensure it stays on top */
 }
+
 
 .footer {
     display: flex;
