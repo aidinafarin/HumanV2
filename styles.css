@@ -86,6 +86,12 @@ svg {
     font-family: Arial, sans-serif;
 }
 
+body, html {
+    overflow: hidden; /* Prevents scrolling */
+    height: 100%; /* Ensures full height */
+    margin: 0;
+}
+
 body {
     background-color: #F7F6F9;
     margin: 0;
@@ -105,6 +111,9 @@ body {
     padding: 20px;
     padding-bottom: 100px; /* Ensure enough space for the footer */
     min-height: calc(100vh - 84px); /* Full height minus footer */
+    height: calc(100vh - 84px); /* Full height minus footer height */
+    overflow-y: scroll; /* Enable scroll within container */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 
