@@ -6,6 +6,7 @@
     <title>HumanV2</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -85,10 +86,16 @@
     </nav>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            window.Telegram.WebApp.ready();
-            window.Telegram.WebApp.disableVerticalSwipe();
-            window.Telegram.WebApp.expand();
-            window.Telegram.WebApp.enableClosingConfirmation();
+            const tg = window.Telegram.WebApp;
+            tg.ready();
+            tg.disableVerticalSwipe();
+            tg.expand();
+            tg.enableClosingConfirmation();
+            console.log(tg.initDataUnsafe);
+
+            function closeApp() {
+                tg.close();
+            }
 
             var claimButton = document.querySelector('.claim');
             
