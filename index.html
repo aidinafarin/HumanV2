@@ -9,6 +9,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="manifest" href="manifest.json">
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
     </head>
 <body>
     <div class="container">
@@ -70,6 +71,8 @@
                 <button>Play</button>
             </div>
         </section>
+
+
     </div>
     <nav class="navigation-bar">
         <div class="footer">
@@ -91,13 +94,15 @@
     <!-- Add your JavaScript here -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            window.Telegram.WebApp.ready();
+            window.Telegram.WebApp.disableVerticalSwipe();
             var claimButton = document.querySelector('.claim');
-
+            
             if (claimButton) {
                 claimButton.addEventListener('touchstart', function () {
                     claimButton.classList.add('pressed');
                 });
-
+                
                 claimButton.addEventListener('touchend', function () {
                     claimButton.classList.remove('pressed');
                 });
@@ -114,18 +119,6 @@
                     claimButton.classList.remove('pressed');
                 });
             }
-
-            var adjustFooter = function () {
-                var footer = document.querySelector('.navigation-bar');
-                var rect = footer.getBoundingClientRect();
-                if (rect.top < window.innerHeight - footer.offsetHeight) {
-                    footer.style.bottom = '0';
-                }
-            };
-
-            window.addEventListener('scroll', adjustFooter);
-            window.addEventListener('resize', adjustFooter);
-            adjustFooter();
         });
 
         // Prevent pinch-to-zoom
