@@ -87,13 +87,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tg = window.Telegram.WebApp;
-            const platform = tg.initDataUnsafe.platform;
-
-            if (platform !== 'android' && platform !== 'ios') {
-                document.body.innerHTML = '<p>This app is only available on mobile devices (Android and iOS).</p>';
-                return;
-            }
-
             tg.ready();
             tg.disableVerticalSwipe();
             tg.expand();
