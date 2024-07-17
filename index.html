@@ -87,11 +87,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tg = window.Telegram.WebApp;
+            const platform = tg.initDataUnsafe.platform;
+
+            if (platform !== 'android' && platform !== 'ios') {
+                document.body.innerHTML = '<p>This app is only available on mobile devices (Android and iOS).</p>';
+                return;
+            }
+
             tg.ready();
             tg.disableVerticalSwipe();
             tg.expand();
             tg.enableClosingConfirmation();
             console.log(tg.initDataUnsafe);
+
+            function sendData() {
+                $.ajax({
+                    url: '/process',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ 'value': tg.initData }),
+                });
+            }
 
             function closeApp() {
                 tg.close();
@@ -121,6 +137,13 @@
                 });
             }
         });
+
+        const tg = window.Telegram.WebApp;
+        console.log(tg.initDataUnsafe);
+
+        function closeApp() {
+            tg.close();
+        }
 
         // Prevent pinch-to-zoom
         document.addEventListener('touchmove', function (event) {
